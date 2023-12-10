@@ -44,10 +44,10 @@ export const Counter = ({count, double, increment, title, changeTitle, ...restPr
         <>{title}</>
       </h2>
       <button onClick={increment}>
-        count is <>{count}</>
+        count is {count}
       </button>
       <h2>
-        Double is: <>{double}</>
+        Double is: {double}
       </h2>
       <button type="button" onClick={onClickMinus}>count minus</button>
     </div>
