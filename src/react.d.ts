@@ -1,9 +1,8 @@
-import * as React from "react";
 import type { Signal } from "@preact/signals-react";
 
 declare module "react" {
-  interface HTMLAttributes<T> extends React.AriaAttributes, React.DOMAttributes<T>, React.HTMLAttributes<T> {
-    children?: React.ReactNode | Signal | undefined;
+  interface DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES {
+    signal?: Signal | undefined;
   }
 }
 
