@@ -8,11 +8,6 @@ export class Signal<T = unknown> {
     this._value = value
   }
 
-
-  get asNode() {
-    return $(this)
-  }
-
   get value() {
     return (()=> {
       try {
@@ -34,6 +29,10 @@ export class Signal<T = unknown> {
 
     this._value = newValue;
     this.notifyChange();
+  }
+
+  get asNode() {
+    return <SignalNode signal={this}/>
   }
 
 
@@ -66,7 +65,6 @@ function useSignal<T>(signal: Signal<T>) {
   return useSyncExternalStore(Signal.subscribe(signal), Signal.getSnapshot(signal))
 }
 
-const SignalValue = function <T>({ signal }: { signal: Signal<T> }) {
+function SignalNode<T>({ signal }: { signal: Signal<T> }) {
   return useSignal(signal)
 }
-const $ = <T, >(signal: Signal<T>) => <SignalValue signal={signal}/>
