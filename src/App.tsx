@@ -11,6 +11,9 @@ function App() {
   const [countState, setCountState] = useState(0);
   const incrementState = () =>
     setCountState((oldCountState) => oldCountState + 1);
+  const decrementState = () =>
+    setCountState((oldCountState) => oldCountState - 1);
+
   const doubleState = countState * 2;
   useEffect(() => {
     if (countState > 10) setCountState(0);
@@ -22,14 +25,13 @@ function App() {
 
   const incrementSignal = () => {
     countSignal.value += 1;
-    console.log("increment", countSignal.value);
   };
   const doubleSignal = useComputed(() => countSignal.value * 2);
   effect(() => {
     if (countSignal.value > 10) countSignal.value = 0;
   });
 
-  console.log("re-render");
+  console.log("render App");
 
   return (
     <div className="App">
@@ -39,6 +41,7 @@ function App() {
         increment={incrementState}
         title={titleState}
         changeTitle={changeTitleState}
+        onClickMinus={decrementState}
       />
       <Counter
         count={countSignal}
